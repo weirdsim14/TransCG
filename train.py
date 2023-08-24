@@ -30,7 +30,7 @@ parser.add_argument(
     help = 'path to the configuration file', 
     type = str
 )
-args = parser.parse_args();
+args = parser.parse_args()
 cfg_filename = args.cfg
 
 with open(cfg_filename, 'r') as cfg_file:

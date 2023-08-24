@@ -56,14 +56,13 @@ res, depth = inferencer.inference(rgb, depth, depth_coefficient = 3, inpainting 
 
 cam_intrinsics = np.load('data/camera_intrinsics/1-camIntrinsics-D435.npy')
 
-res = np.clip(res, 0.3, 1.0)
-depth = np.clip(depth, 0.3, 1.0)
+res = np.clip(res, 0.3, 1.0) # default 0.3, 1.0
+depth = np.clip(depth, 0.3, 1.0) # default 0.3, 1.0
 
 cloud = draw_point_cloud(rgb, res, cam_intrinsics, scale = 1.0)
-cloud_gt = draw_point_cloud(rgb, depth_gt, cam_intrinsics, scale = 1.0)
 
 frame = o3d.geometry.TriangleMesh.create_coordinate_frame(0.1)
 sphere = o3d.geometry.TriangleMesh.create_sphere(0.002,20).translate([0,0,0.490])
-o3d.visualization.draw_geometries([cloud, cloud_gt, frame, sphere])
+o3d.visualization.draw_geometries([cloud, frame, sphere])
 
 
